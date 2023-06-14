@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>{{'sign_up_now' | translate}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="bg_color">
+    <div class="form">
+        <ion-list lines="none">
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"email" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="data.email" mode="md" type="email"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"phone_number" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="data.phoneNumber" mode="md" type="text"></ion-input>
+            </ion-item>
+            <p>
+                <small class="help-text">{{ "phone_number_prefix" | translate }}</small>
+            </p>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"password" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="data.password" mode="md" class="password" type="password" placeholder="******"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"birthdate" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-datetime [max]="maxDate" [(ngModel)]="data.birthDate" displayFormat="DD MMM YYYY" mode="md"></ion-datetime>
+                <ion-icon class="zmdi zmdi-calendar-alt ion-text-end" slot="end"></ion-icon>
+            </ion-item>
+
+            <ion-item>
+                <ion-label mode="md" position="floating">
+                    {{'gender' | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-select [(ngModel)]="data.gender" placeholder="{{'select_your_gender' | translate}}" cancelText="{{'cancel' | translate}}" okText="{{'done' | translate}}">
+                    <ion-select-option value="female">Female</ion-select-option>
+                    <ion-select-option value="male">Male</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+        </ion-list>
+    </div>
+
+    <div id="recaptcha-container"></div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <h2 class="ion-text-center">
+        <small>{{'sign_up_text_1' | translate}}<br>{{'sign_up_text_2' | translate}}</small>
+    </h2>
+    <ion-button [disabled]="isInvalid()" size="large" expand="block" class="btn" (click)="verification()">{{'continue' | translate}}</ion-button>
+</ion-footer>

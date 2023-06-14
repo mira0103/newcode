@@ -1,0 +1,103 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="title_inner d-flex">
+                <ion-button size="samll" expand="block" class="btn end" [disabled]="isInvalid()" (click)="save()">{{'save' | translate}}</ion-button>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+
+    <div class="profile_img">
+        <div class="img_box center_img" (click)="choosePhoto()">
+            <img [src]="data?.photo" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+        </div>
+        <h2 class="ion-text-center" (click)="choosePhoto()">{{'change_profile_pic' | translate}}</h2>
+    </div>
+</ion-header>
+
+<ion-content fullscreen class="bg_color">
+    <div class="form">
+        <ion-list lines="none">
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"name" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="data.name" mode="md" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"username" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="data.username" mode="md" type="text"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">{{"bio" | translate}}</ion-label>
+                <ion-textarea [(ngModel)]="data.bio" mode="md" rows="2"></ion-textarea>
+            </ion-item>
+
+
+            <h2>{{'private_info' | translate}}</h2>
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"email" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="data.email" mode="md" type="email"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"phone_number" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-input [(ngModel)]="data.phoneNumber" mode="md" type="text"></ion-input>
+            </ion-item>
+            <p>
+                <small class="help-text">{{ "phone_number_prefix" | translate }}</small>
+            </p>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">
+                    {{"birthdate" | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-datetime [max]="maxDate" [(ngModel)]="data.birthDate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" mode="md"></ion-datetime>
+                <ion-icon class="zmdi zmdi-calendar-alt ion-text-end" slot="end"></ion-icon>
+            </ion-item>
+
+            <ion-item>
+                <ion-label mode="md" position="floating">
+                    {{'gender' | translate}}
+                    <ion-text color="primary">*</ion-text>
+                </ion-label>
+                <ion-select [(ngModel)]="data.gender" placeholder="{{'select_your_gender' | translate}}" cancelText="{{'cancel' | translate}}" okText="{{'done' | translate}}">
+                    <ion-select-option value="female">Female</ion-select-option>
+                    <ion-select-option value="male">Male</ion-select-option>
+                </ion-select>
+            </ion-item>
+
+            <h2>{{'social_info' | translate}}</h2>
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">{{"facebook_id" | translate}}</ion-label>
+                <ion-input [(ngModel)]="data.facebookId" mode="md" type="email"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">{{"twitter_id" | translate}}</ion-label>
+                <ion-input [(ngModel)]="data.twitterId" mode="md" type="email"></ion-input>
+            </ion-item> 
+
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">{{"instagram_id" | translate}}</ion-label>
+                <ion-input [(ngModel)]="data.instagramId" mode="md" type="email"></ion-input>
+            </ion-item> 
+        </ion-list>
+    </div>
+</ion-content>

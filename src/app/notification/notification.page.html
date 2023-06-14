@@ -1,0 +1,69 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-segment [(ngModel)]="tab" lines="none" mode="md">
+            <ion-segment-button value="notifications" mode="md">
+                <ion-label>{{'notifications' | translate}}</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="messages" mode="md" class="active">
+                <ion-label>{{'messages' | translate}}</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color">
+    <div class="tab_container" [ngSwitch]="tab">
+        <ion-list lines="none" *ngSwitchCase="'notifications'">
+            <ion-item *ngFor="let notification of notifications">
+                <div class="item_inner d-flex">
+                    <div class="avatar_img_box center_img">
+                        <img [src]="notification.userPhotoUrl" class="crop_img">
+                    </div>
+                    <div class="text_box">
+                        <div class="text_box">
+                            <h2>{{ notification?.userFullName }}</h2>
+                            <h3 class="d-flex">
+                                <span>{{ notification?.action }}</span> 
+                                <span class="notifications_at" text-end>{{ notification?.createdAt | amTimeAgo }}</span>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="img_container end">
+                        <div class="img_box center_img">
+                            <img src="assets/imgs/d1.png" class="crop_img">
+                        </div>
+                        <ion-icon [ngClass]="notification.icon" class="zmdi"></ion-icon>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+
+        <ion-list class="messages" lines="none" *ngSwitchCase="'messages'">
+            <ion-item *ngFor="let chat of chats" (click)="viewChat(chat.id)">
+                <div class="item_inner d-flex">
+                    <div class="avatar_img_box center_img">
+                        <img *ngIf="chat.createdByUserId === currentUser.uid" [src]="chat.recipientPhotoUrl" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+                        <img *ngIf="chat.createdByUserId !== currentUser.uid" [src]="chat.senderPhotoUrl" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+                    </div>
+                    <div class="text_box">
+                        <h2 *ngIf="chat.createdByUserId === currentUser.uid">{{ chat.recipientName }}</h2>
+                        <h2 *ngIf="chat.createdByUserId !== currentUser.uid">{{ chat.senderName }}</h2>
+                        <h3 class="d-flex" *ngIf="chat.messages.length === 0">
+                            <span>No messages yet.</span> 
+                        </h3>
+                        <h3 class="d-flex" *ngIf="chat.messages.length > 0">
+                            <span>{{ chat.lastMessage.text }}</span> 
+                            <span class="notifications_at end" text-end>{{ chat.lastMessage.createdAt | amTimeAgo }}</span>
+                        </h3>
+                    </div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <ion-fab *ngIf="tab === 'messages'" horizontal="end" vertical="bottom" slot="fixed">
+        <ion-fab-button (click)="searchUser()">
+            <ion-icon name="chatbox"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
+</ion-content>

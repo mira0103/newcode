@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="search_box d-flex">
+        <div class="search_icon ion-text-start">
+            <img src="assets/imgs/ic_explore.png">
+        </div>
+        <ion-searchbar (ionInput)="search($event.target.value)" debounce="500" mode="md" class="ion-no-padding" searchIcon="hide" placeholder="{{'search' | translate}}"></ion-searchbar>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="bg_color">
+  <ion-list class="messages" lines="none">
+    <ion-item *ngFor="let account of accounts" (click)="addChat(account)">
+        <div class="item_inner d-flex">
+            <div class="avatar_img_box center_img">
+                <img [src]="account.photo" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+            </div>
+            <div class="text_box">
+              <h2>{{ account.name }}</h2>
+              <h3 class="d-flex">
+                <span>{{ '@' + account.username }}</span>
+              </h3>
+            </div>
+        </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

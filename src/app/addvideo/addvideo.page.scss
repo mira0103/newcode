@@ -1,0 +1,129 @@
+ion-header ion-toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    ion-title {
+        text-align: justify !important;
+
+        ion-icon {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.skeleton-loader {
+    height: 100%;
+    width: 100%;
+}
+
+.camera_view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img,
+    video {
+        height: 100%;
+        width: auto;
+        max-width: initial;
+    }
+
+}
+
+.buy_this_app {
+    background: var(--primary);
+    position: relative;
+    bottom: 0px;
+    right: 0px;
+    border-radius: 4px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    width: fit-content;
+
+    h2 {
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        margin: auto;
+        width: fit-content;
+        font-size: .8rem;
+        font-weight: 400;
+        padding: 0;
+
+        ion-icon {
+            font-size: 1rem;
+            min-width: 22px;
+        }
+    }
+}
+
+ion-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 10px 15px 10px;
+
+    ion-row {
+        align-items: center;
+
+        ion-col {
+            ion-icon {
+                color: var(--white);
+                font-size: 1.4rem;
+                line-height: 33px;
+                height: 33px;
+
+                &.zmdi-videocam {
+                    background: #e80202;
+                    border-radius: 50%;
+                    width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+
+    h2 {
+        color: var(--white);
+        font-size: .85rem;
+        font-weight: 400;
+        letter-spacing: 0.5px;
+        position: relative;
+        z-index: 99;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+        width: fit-content;
+        padding-top: 12px;
+
+        ion-icon {
+            font-size: 1.7rem;
+            position: relative;
+            height: 20px;
+            line-height: 20px;
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%);
+        display: block !important;
+        opacity: .8;
+    }
+}

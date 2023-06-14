@@ -1,0 +1,55 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title> </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="camera_view">
+        <video loop #videoPlayer poster="./assets/imgs/splash.png" [src]="videoUrl | cdvphotolibrary" type="video/mp4"></video>
+    </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <div class="filter">
+        <div class="scroll_container">
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_1.png" class="crop_img">
+            </div>
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_2.png" class="crop_img">
+            </div>
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_3.png" class="crop_img">
+            </div>
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_4.png" class="crop_img">
+            </div>
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_1.png" class="crop_img">
+            </div>
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_2.png" class="crop_img">
+            </div>
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_3.png" class="crop_img">
+            </div>
+            <div class="img_box center_img">
+                <img src="assets/imgs/filter_img_4.png" class="crop_img">
+            </div>
+        </div>
+    </div>
+
+    <div class="options d-flex">
+        <h2 class="d-flex">
+            <ion-icon class="zmdi zmdi-audio ion-text-start"></ion-icon>{{'add_music' | translate}}
+        </h2>
+        <h2 class="d-flex">
+            <ion-icon class="zmdi zmdi-tune ion-text-start"></ion-icon>{{'volume' | translate}}
+        </h2>
+        <ion-button size="small" expand="block" class="btn end" (click)="post_info()">{{'next' | translate}}</ion-button>
+    </div>
+</ion-footer>

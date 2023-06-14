@@ -1,0 +1,55 @@
+.video_row {
+    ion-row {
+        padding: 0 1.5px;
+
+        ion-col {
+            padding: 1.2px 1.2px;
+
+            .item_box {
+                width: 100%;
+                height: 150px;
+                border-radius: 4px;
+                overflow: hidden;
+
+                .img_box {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 4px;
+                    position: relative;
+
+                    video {
+                        position: absolute;
+                        left: 50%;
+                        top: 50%;
+                        min-width: 100%;
+                        min-height: 100%;
+                        transform: translate(-50%,-50%);
+                        z-index: 0;
+
+                        object-fit: cover;
+                        width: inherit;
+                        height: inherit;
+                    }
+                }
+
+                p {
+                    position: absolute;
+                    top: 5px;
+                    left: 0;
+                    width: 100%;
+                    color: var(--white);
+                    margin: 0;
+                    font-size: .76rem;
+                    padding: 0 7px;
+
+                    ion-icon {
+                        font-size: 0.8rem;
+                        margin: 0 2px;
+                        position: relative;
+                        top: 1px;
+                    }
+                }
+            }
+        }
+    }
+}

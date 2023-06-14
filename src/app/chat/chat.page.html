@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <div class="title_inner d-flex" (click)="user_profile()">
+                <div class="center_img profile_img">
+                    <img *ngIf="chat.createdByUserId === currentUser?.uid" [src]="chat.recipientPhotoUrl" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+                    <img *ngIf="chat.createdByUserId !== currentUser?.uid" [src]="chat.senderPhotoUrl" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+                </div>
+                <h2 *ngIf="chat.createdByUserId === currentUser?.uid">{{ chat.recipientName }}</h2>
+                <h2 *ngIf="chat.createdByUserId !== currentUser?.uid">{{ chat.senderName }}</h2>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="bg_color" fullscreen>
+    <div class="chat_container d-flex">
+        <div class="chat_box d-flex" *ngFor="let message of chat?.messages" [ngClass]="message?.userId === currentUser?.uid ? 'send' : 'received'">
+            <div class="chat_details">
+                <p [hidden]="message.userId === currentUser?.uid" text-start>{{ message.createdAt | date: 'h:mm a' }}</p>
+                <p [hidden]="message.userId !== currentUser?.uid" text-end>{{ message.createdAt | date: 'h:mm a' }}</p>
+                <div class="chat">
+                    <h2>{{ message.text }}</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <div class="form" lines="none">
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <!-- <h3>
+                    <ion-icon class="zmdi zmdi-mood ion-text-start"></ion-icon>
+                </h3> -->
+                <ion-input [(ngModel)]="data.text" mode="md" type="text" placeholder="{{'write_your_message' | translate}}"></ion-input>
+                <div class="send_button" (click)="sendMessage()">
+                    <ion-icon  class="zmdi zmdi-mail-send ion-text-end"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+    </div>
+</ion-footer>

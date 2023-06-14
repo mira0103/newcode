@@ -1,0 +1,158 @@
+ion-header ion-toolbar ion-title {
+    position: relative !important;
+    top: 0;
+    padding: 0 !important;
+
+    .title_inner {
+        .profile_img {
+            min-width: 35px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 16px;
+        }
+
+        h2 {
+            margin: 0;
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+    }
+}
+
+.chat_container {
+    padding: 0 15px;
+    flex-wrap: wrap;
+    padding-top: 20px;
+
+    .chat_box {
+        width: auto !important;
+        margin-bottom: 10px;
+        align-items: flex-start;
+        width: 100% !important;
+
+        .chat_details {
+            display: flex;
+        }
+
+        .chat {
+            min-width: 90px;
+            border-radius: 8px;
+            max-width: calc(100% - 63px);
+            min-width: 155px;
+
+            h2 {
+                margin: 0;
+                font-size: .95rem;
+                color: var(--white);
+                font-weight: 400;
+            }
+        }
+
+        p {
+            margin: 0;
+            font-size: 0.68rem;
+            font-weight: 500;
+            color: var(--text-light);
+            padding: 0 5px;
+            padding-top: 15px;
+            min-width: 50px;
+        }
+
+        &.received {
+            .chat_details {
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            .chat {
+                background: #35383f;
+                padding: 15px 30px 15px 12px;
+            }
+        }
+
+        &.send {
+            margin-left: auto;
+            margin-right: 0;
+
+            .chat_details {
+                margin-left: auto;
+                margin-right: 0;
+
+            }
+
+            .chat {
+                background: var(--primary);
+                padding: 15px 12px 15px 30px;
+                margin-left: auto;
+
+                h2 {
+                    text-align: right;
+
+                }
+
+                p {
+                    text-align: right;
+                    color: var(--text-light);
+                }
+            }
+        }
+    }
+}
+
+
+ion-footer {
+    background: var(--bg-secondary);
+
+    .form {
+        padding: 0;
+
+        ion-item {
+            margin: 0;
+            padding: 0 15px !important;
+
+            .item_inner {
+                align-items: center !important;
+
+                h3 {
+                    margin: 0;
+                    display: block;
+                    min-height: unset;
+                    line-height: normal;
+
+                    ion-icon {
+                        color: var(--white);
+                        font-size: 1.2rem;
+                        opacity: 0.8;
+                        min-width: 32px;
+                        line-height: 35px;
+                        height: 27px;
+                    }
+                }
+
+                ion-input {
+                    --placeholder-color: var(--white) !important;
+                    --placeholder-opacity: .8;
+                    font-size: .9rem !important;
+                    --placeholder-font-weight: 400 !important;
+                    font-weight: 400 !important;
+                    padding: 17px 0 !important;
+                }
+
+                .send_button {
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    min-width: 37px;
+
+                    ion-icon {
+                        font-size: 1.35rem;
+                        line-height: 22px;
+                        height: 22px;
+                    }
+                }
+            }
+        }
+    }
+}

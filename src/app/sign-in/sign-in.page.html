@@ -1,0 +1,43 @@
+<!--
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'sign_text' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+-->
+
+<ion-content class="bg_color" fullscreen>
+    <div class="bg_img center_img">
+        <img src="assets/imgs/video_1.png" class="crop_img">
+    </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <div class="form">
+        <h2 class="d-flex"><span>{{'sign_text' | translate}}</span>
+            <ion-icon class="zmdi zmdi-close  end  ion-text-end"></ion-icon>
+        </h2>
+        <ion-list lines="none">
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">{{"user_name_email_phone" | translate}}</ion-label>
+                <ion-input [(ngModel)]="data.username" mode="md" type="text"></ion-input>
+            </ion-item>
+    
+            <ion-item lines="none">
+                <ion-label mode="md" position="floating">{{"password" | translate}}</ion-label>
+                <ion-input [(ngModel)]="data.password" mode="md" class="password" type="password"></ion-input>
+            </ion-item>
+        </ion-list>
+    
+        <ion-button size="large" expand="block" class="btn" (click)="login()">{{'login' | translate}}</ion-button>
+    
+        <h3 class="ion-text-center">{{'or' | translate}}</h3>
+    
+        <ion-button size="large" expand="block" class="btn fb_btn" (click)="continue_with_facebook()">
+            <ion-icon class="zmdi zmdi-facebook ion-textstart"></ion-icon> {{'continue_with_facebook' | translate}}
+        </ion-button>
+    </div>
+    <div class="new_on_tiktok_clone ion-text-center" (click)="sign_up()">
+        <h2>{{'new_on_tiktok_clone' | translate}} TikTok Clone? <span>{{'create_account' | translate}}</span></h2>
+    </div>
+</ion-footer>

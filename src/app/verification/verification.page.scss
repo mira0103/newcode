@@ -1,0 +1,45 @@
+.form {
+    margin-top: 48px;
+
+    h2 {
+        margin: 0;
+        color: var(--text-light);
+        font-size: .95rem;
+        margin-bottom: 30px;
+    }
+
+    ion-list {
+        padding-top: 50px;
+
+        ion-item {
+            margin-bottom: 40px;
+
+            ion-label {
+                width: fit-content;
+                margin: 0 auto;
+                transform: unset;
+                font-size: .8rem !important;
+                margin-bottom: 13px !important;
+            }
+
+            ion-input {
+                text-align: center;
+                letter-spacing: 3px;
+            }
+        }
+    }
+
+    h3 {
+        margin: 0;
+        color: var(--primary);
+        margin: 0;
+        color: var(--primary);
+        margin-top: 19px;
+        font-size: 1.1rem;
+
+        span {
+            color: var(--white);
+            font-weight: 400;
+        }
+    }
+}

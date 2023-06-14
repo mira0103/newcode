@@ -1,0 +1,31 @@
+<ion-content fullscreen (click)="dismiss()"></ion-content>
+
+<ion-footer class="ion-no-border">
+    <h1>{{'comments' | translate}}</h1>
+    <ion-list lines="none" class="comments">
+        <ion-item (click)="user_profile()" *ngFor="let comment of comments">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img [src]="comment?.photoUrl" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+                </div>
+                <div class="text_box">
+                    <h2>{{ comment?.name }}</h2>
+                    <p>{{ comment?.text }} <span text-end>{{ comment?.createdAt | amTimeAgo }}</span></p>
+                </div>
+                <!-- <ion-icon class="zmdi zmdi-favorite-outline ion-text-end end"></ion-icon> -->
+            </div>
+        </ion-item>
+    </ion-list>
+
+    <div class="write_your_comment form" lines="none">
+        <ion-item lines="none">
+            <div class="item_inner d-flex">
+                <div class="img_box center_img">
+                    <img [src]="currentUserInfo?.photo" class="crop_img">
+                </div>
+                <ion-input [(ngModel)]="data.text" mode="md" type="text" placeholder="{{'write_your_comment' | translate}}"></ion-input>
+                <ion-icon (click)="addComment()" class="zmdi zmdi-mail-send end ion-text-end"></ion-icon>
+            </div>
+        </ion-item>
+    </div>
+</ion-footer>

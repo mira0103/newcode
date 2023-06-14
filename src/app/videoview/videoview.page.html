@@ -1,0 +1,62 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-title>
+            <ion-icon class="zmdi zmdi-close" (click)="dismiss()"></ion-icon>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="video_view">
+        <ion-slides [options]="option1">
+            <ion-slide>
+                <video loop autoplay class="videoPlayer" poster="./assets/imgs/splash.png" [src]="post?.videoUrl" (play)="addView(post)" (paused)="addView(post)"  (ended)="addView(post)" type="video/ogg"></video>
+                <div class="video_option">
+                    <div class="details d-flex">
+                        <div class="text_box">
+                            <h2 (click)="user_profile()">{{ '@' + post?.username }}</h2>
+                            <p (click)="videos_list()">
+                                {{ post?.description }}
+                                <i>{{'see_more' | translate}}</i>
+                            </p>
+                        </div>
+
+                        <div class="other_details end">
+                            <h3 class="ion-text-center" (click)="sharePost(post)">
+                                <ion-icon class="zmdi zmdi-mail-reply"></ion-icon>
+                                {{ post.sharing | objectKeysLength | shortNumber }}
+                            </h3>
+                            <h3 *ngIf="post.canComment" (click)="comment(post?.id)">
+                                <ion-icon class="zmdi zmdi-comment-outline"></ion-icon>
+                                {{ post?.comments?.length }}
+                            </h3>
+                            <h3 [ngClass]="isBookmarked(post?.bookmarks) ? 'favorite_icons active' : 'favorite_icons'" (click)="toggleBookmark(post)">
+                                <span class="favorite_icon">
+                                    <ion-icon class="zmdi zmdi-bookmark-outline"></ion-icon>
+                                    <ion-icon class="zmdi zmdi-bookmark"></ion-icon>
+                                </span>
+                                {{ post?.bookmarks | objectKeysLength | shortNumber }}
+                            </h3>
+                            <h3 [ngClass]="isLiked(post?.likes) ? 'favorite_icons active' : 'favorite_icons'" (click)="toggleLike(post)">
+                                <span class="favorite_icon">
+                                    <ion-icon class="zmdi zmdi-favorite-outline"></ion-icon>
+                                    <ion-icon class="zmdi zmdi-favorite"></ion-icon>
+                                </span>
+                                {{ likes[post.id] | objectKeysLength | shortNumber }}
+                            </h3>
+                            <div class="user_profile" (click)="toggleFollow(post)">
+                                <div class="img_box center_img">
+                                    <img [src]="post?.posterPhoto" onerror="this.src='assets/imgs/user-placeholder.svg'" class="crop_img">
+                                </div>
+                                <ion-icon [hidden]="currentUser?.uid === post.postBy" [ngClass]="following[post.postBy] ? 'zmdi-check' : 'zmdi-plus'" class="zmdi"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="video_stick">
+                        <div class="video_stick_active" style="width: 70%"></div>
+                    </div>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </div>
+</ion-content>

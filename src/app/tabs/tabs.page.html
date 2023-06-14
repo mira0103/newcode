@@ -1,0 +1,40 @@
+<ion-tabs>
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="home">
+            <div class="img_box">
+                <img src="assets/imgs/ic_home.png" class="before">
+                <img src="assets/imgs/ic_homeactive.png" class="after">
+            </div>
+            <ion-label>{{'home' | translate}}</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="explore">
+          <div class="img_box">
+                <img src="assets/imgs/ic_explore.png" class="before">
+                <img src="assets/imgs/ic_exploreactive.png" class="after">
+            </div>
+            <ion-label>{{'explore' | translate}}</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button (click)="chooseVideo()" class="add_video_button">
+          <h3><img src="assets/imgs/ic_add.png"></h3>
+        </ion-tab-button>
+
+        <ion-tab-button tab="notification">
+         <div class="img_box">
+                <img src="assets/imgs/ic_notification.png" class="before">
+                <img src="assets/imgs/ic_notificationactive.png" class="after">
+            </div>
+            <ion-label>{{'notification' | translate}}</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="my_profile">
+         <div class="img_box">
+                <img src="assets/imgs/ic_profile.png" class="before">
+                <img src="assets/imgs/ic_profileactive.png" class="after">
+            </div>
+            <ion-label>{{'profile' | translate}}</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+
+</ion-tabs>

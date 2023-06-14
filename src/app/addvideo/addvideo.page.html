@@ -1,0 +1,40 @@
+<ion-header class="bg_transparent">
+    <ion-toolbar>
+        <ion-title>
+            <div class="d-flex" style="height: 60px;">
+                <ion-icon class="zmdi zmdi-close" (click)="dismiss()"></ion-icon>
+                <div class="buy_this_app end" *ngIf="config.showBuyPromt" (click)="buyAppAction()">
+                    <h2>
+                        <!--                    <ion-icon class="zmdi zmdi-mall"></ion-icon>-->
+                        {{"buy_this_app" | translate}}
+                    </h2>
+                </div>
+            </div>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+    <div class="camera_view">
+        <!-- <img src="assets/imgs/video_2.png"> -->
+        <ion-spinner name="lines" [hidden]="!isVideoHidden"></ion-spinner>
+        <video [hidden]="isVideoHidden" autoplay loop #videoPlayer [src]="videoUrl | cdvphotolibrary" type="video/mp4"></video>
+    </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+    <ion-row class="ion-text-center">
+        <ion-col size="4">
+            <ion-icon class="zmdi zmdi-camera-front"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+            <ion-icon class="zmdi zmdi-videocam" (click)="add_video_filter()"></ion-icon>
+        </ion-col>
+        <ion-col size="4">
+            <ion-icon class="zmdi zmdi-flash-off"></ion-icon>
+        </ion-col>
+    </ion-row>
+    <h2 class="ion-no-border">
+        <ion-icon class="zmdi zmdi-chevron-up"></ion-icon>{{'swip_up_for_gallery' | translate}}
+    </h2>
+</ion-footer>
